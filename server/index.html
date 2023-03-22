@@ -63,7 +63,7 @@ function joinLobby() {
 
 
 
-var ws = new WebSocket('wss://localhost:3000/echo');
+var ws = new WebSocket('ws://localhost:3000/echo');
 
         ws.addEventListener("open", () => {
             console.log("We are connected");            
