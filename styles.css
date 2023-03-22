@@ -1,0 +1,66 @@
+/* Style for container div */
+container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+}
+
+/* Style for buttons */
+button {
+  margin: 10px 0;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+button:focus {
+  background-color: #0069d9;
+}
+
+/* Style for score table */
+#score-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+#score-table div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+#score-table div span {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
