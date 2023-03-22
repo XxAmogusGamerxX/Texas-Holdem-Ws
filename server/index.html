@@ -62,8 +62,8 @@ function joinLobby() {
 }
 
 
-
-var ws = new WebSocket('ws://localhost:3000/echo');
+// var ws = new WebSocket("ws://localhost:3000/echo"); if on pc
+var ws = new WebSocket("wss://CowboyShootout.LucienDuchateau.repl.co/echo"); // if on replit
 
         ws.addEventListener("open", () => {
             console.log("We are connected");            
@@ -120,7 +120,7 @@ var ws = new WebSocket('ws://localhost:3000/echo');
             choice = "reload";
         }
         function submit() {
-            // submit
+            ws.send("choice_" + choice + "_" + lobbyId.toString());
         }
 
         

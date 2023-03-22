@@ -35,7 +35,11 @@ app.ws('/echo', (ws) => {
             lobbies[e][2][1][0].send("restart");
         }
 
-        
+        if(e.toString().startsWith("choice_")) {
+          e = e.substring(7);
+          let arr = e.split('_');
+          console.log(arr);
+        }
         if (e.toString().startsWith("join")) { // if a user triest to join (this request is also "joinLOBBYID" so we know the lobby)
             e = e.substring(4); // remove the join part so we get the lobby id
             var found = false;
