@@ -23,7 +23,7 @@ app.ws('/echo', (ws) => {
 
         if (e.toString() == "create") { // if they want to create a server
             ws.send("createCD" + lobby.toString()); // send them back the "createCD" command and the lobbie's id the client recives that and knows that its now in a lobby;
-            lobbies.push([lobby.toString(), 1, [[ws, ws._socket._peername,"",0]]],0); // 1 lobby consists of [lobbie's id, players in the lobby, websockets and other info [[the actual websocket, the id, the choice it made currently, the reloads it has]], players who made a move]
+            lobbies.push([lobby.toString(), 1, [[ws, ws._socket._peername,"",0]],0]); // 1 lobby consists of [lobbie's id, players in the lobby, websockets and other info [[the actual websocket, the id, the choice it made currently, the reloads it has]], players who made a move]
             lobby += 1; // just make the next lobby have a code that is up one so there arent overlapping
         }
 
@@ -38,7 +38,26 @@ app.ws('/echo', (ws) => {
         if(e.toString().startsWith("choice_")) {
           e = e.substring(7);
           let arr = e.split('_');
-          console.log(arr);
+          let i = 0;
+          let i2 = 0;
+          let found = false;
+
+          do {
+            if(lobbies[arr[1] - 1][2][i][1] == ws._socket._peername) {
+              i2 = 1;
+              found = true;
+            }
+            i++
+          } while (i < 2);
+
+          if(found == true) {
+            lobbies[arr[1] - 1][2][i2][3] = arr[2];
+            lobbies[arr[1] - 1][3] += 1;
+          }
+          
+          if(lobbies[arr[1] - 1][3] == 2) {
+            
+          }
         }
         if (e.toString().startsWith("join")) { // if a user triest to join (this request is also "joinLOBBYID" so we know the lobby)
             e = e.substring(4); // remove the join part so we get the lobby id
