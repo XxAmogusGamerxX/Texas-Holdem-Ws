@@ -44,19 +44,21 @@ app.ws('/echo', (ws) => {
 
           do {
             if(lobbies[arr[1] - 1][2][i][1] == ws._socket._peername) {
-              i2 = 1;
+              i2 = i;
               found = true;
             }
             i++
           } while (i < 2);
 
           if(found == true) {
-            lobbies[arr[1] - 1][2][i2][3] = arr[2];
+            lobbies[arr[1] - 1][2][i2][3] = arr[0];
             lobbies[arr[1] - 1][3] += 1;
           }
           
           if(lobbies[arr[1] - 1][3] == 2) {
-            
+            const choices = [];
+            choices.push(lobbies[arr[1] - 1][2][0][3]);
+            choices.push(lobbies[arr[1] - 1][2][1][3]);
           }
         }
         if (e.toString().startsWith("join")) { // if a user triest to join (this request is also "joinLOBBYID" so we know the lobby)
